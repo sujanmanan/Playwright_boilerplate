@@ -1,5 +1,4 @@
 import { Page,Locator,expect } from '@playwright/test';
-import { PageTitleEnum } from '../enums/PageTitleEnum';
 
 export class DefaultPage{
     private page: Page;
@@ -40,6 +39,10 @@ export class DefaultPage{
         return locator.selectOption(value);
     }
 
+    getText(locator:Locator){
+        return locator.textContent();
+    }
+
     getFirstOptionValueFromDropdown(dropdown: Locator){
         const firstOption = dropdown.locator('option:not([value=""])').first();
         return firstOption.getAttribute('value');
@@ -47,6 +50,26 @@ export class DefaultPage{
 
     shouldBeEqual(actual:any,expected:any){
         expect(actual).toBe(expected);
+    }
+
+    shouldListBeEqual(actual:any,expected:any){
+        expect(actual).toEqual(expected);
+    }
+
+    shouldTitleBeEqual(page:Page,expectedTitle:string){
+        expect(page).toHaveTitle(expectedTitle);
+    }
+
+    shouldTextBeEquivalent(actual:Locator,expected:any){
+        expect(actual).toHaveText(expected);
+    }
+
+    shouldContainText(actual:Locator,expected:any){
+        expect(actual).toContainText(expected);
+    }
+
+    getListText(object:string){
+        return this.page.locator(object).allTextContents();
     }
 
 }
