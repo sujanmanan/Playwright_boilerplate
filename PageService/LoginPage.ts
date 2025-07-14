@@ -25,7 +25,7 @@ export class LoginPage{
     }
 
     async loginAdmin() {
-        return this.navigatePage.navigateTo(
+        return await this.navigatePage.navigateTo(
             () => this.login(process.env.TEST_USERNAME!, process.env.TEST_PASSWORD!),
             ProductPage,this.page 
         );
