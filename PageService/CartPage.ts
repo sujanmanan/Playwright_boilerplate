@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { DefaultPage } from './DefaultPage';
+import { DefaultPage } from '../Utils/DefaultPage';
 import dotenv from 'dotenv';
 
 dotenv.config();

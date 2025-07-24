@@ -56,6 +56,10 @@ export class DefaultPage{
         expect(actual).toEqual(expected);
     }
 
+    shouldListBeSame(actual:any,expected:any){
+        expect(actual).toEqual(expected.sort());
+    }
+
     shouldTitleBeEqual(page:Page,expectedTitle:string){
         expect(page).toHaveTitle(expectedTitle);
     }
@@ -68,8 +72,8 @@ export class DefaultPage{
         expect(actual).toContainText(expected);
     }
 
-    getListText(object:string){
-        return this.page.locator(object).allTextContents();
+    getListText(objectLocator:string){
+        return this.page.locator(objectLocator).allTextContents();
     }
 
     shouldCheckboxBeClicked(object:Locator){

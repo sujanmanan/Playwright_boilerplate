@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { DefaultPage } from './DefaultPage';
+import { DefaultPage } from '../Utils/DefaultPage';
 import dotenv from 'dotenv';
 import { productPageObject } from '../PageObjects/ProductPageObject';
 
@@ -16,6 +16,10 @@ export class ProductPage{
 
     async sort(){
         await this.defaultPage.selectDropdown(this.defaultPage.getByClass(productPageObject.productSort),'za');
+    }
+
+    async getItemsList(){
+        return await this.defaultPage.getListText(productPageObject.productList);
     }
 
     async addToCart(){

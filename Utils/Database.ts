@@ -14,6 +14,6 @@ export async function getDataFromDB(queryStr:string) {
   
   await client.connect();
   const result = await client.query(queryStr);
-  console.log(result.rows); 
   await client.end();
+  return result.rows;
 }

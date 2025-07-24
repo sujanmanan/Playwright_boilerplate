@@ -1,9 +1,9 @@
 import { Page } from '@playwright/test';
 import { loginPageObject } from '../PageObjects/LoginPageObject';
-import { DefaultPage } from './DefaultPage';
+import { DefaultPage } from '../Utils/DefaultPage';
 import { ProductPage } from './ProductPage';
 import dotenv from 'dotenv';
-import { NavigatePage } from './NavigatePage';
+import { NavigatePage } from '../Utils/NavigatePage';
 
 dotenv.config();
 
