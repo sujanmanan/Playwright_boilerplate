@@ -72,4 +72,12 @@ export class DefaultPage{
         return this.page.locator(object).allTextContents();
     }
 
+    shouldCheckboxBeClicked(object:Locator){
+        expect(object).toBeChecked();
+    }
+
+    shouldObjectBeEnabled(object:Locator){
+        expect(object).toBeEnabled();
+    }
+
 }
