@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export async function getPostgresClient(queryStr:string) {
+export async function getDataFromDB(queryStr:string) {
   const client = new Client({
     host: process.env.HOST!,       
     port: process.env.PORT!,             
