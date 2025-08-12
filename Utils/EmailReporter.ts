@@ -23,7 +23,7 @@ class EmailReporter implements Reporter {
 
       await transporter.sendMail({
         from: `"Playwright Test Reporter" <${process.env.EMAIL_USER}>`,
-        to: 'xujan1966@gmail.com',
+        to: process.env.RECEIVER_EMAIL,
         subject: `Playwright Test Failed: ${test.title}`,
         text: failureMessage,
       });

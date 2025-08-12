@@ -56,19 +56,19 @@ export class DefaultPage{
         expect(actual).toEqual(expected);
     }
 
-    shouldListBeSame(actual:any,expected:any){
-        expect(actual).toEqual(expected.sort());
+    shouldListBeEquivalent(actual:any,expected:any){
+        expect(actual.sort()).toEqual(expected.sort());
     }
 
     shouldTitleBeEqual(page:Page,expectedTitle:string){
         expect(page).toHaveTitle(expectedTitle);
     }
 
-    shouldTextBeEquivalent(actual:Locator,expected:any){
+    shouldTextBeSame(actual:Locator,expected:any){
         expect(actual).toHaveText(expected);
     }
 
-    shouldContainText(actual:Locator,expected:any){
+    shouldTextBeEquivalent(actual:Locator,expected:any){
         expect(actual).toContainText(expected);
     }
 

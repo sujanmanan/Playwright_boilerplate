@@ -6,28 +6,28 @@ import { DefaultPage } from '../Utils/DefaultPage';
 import { PageTitleEnum } from '../enums/PageTitleEnum';
 import { getDataFromDB } from '../Utils/Database';
 
-test("Navigation test",async({page})=>{
+test.beforeEach(async({ page })=>{
     await page.goto('');
-    let loginPageObj = new LoginPage(page);
-    let defaultPageObj = new DefaultPage(page);
-    let navigatePageObj = new NavigatePage(page);
+})
+
+test("Navigation test",async({page})=>{
+    const loginPageObj = new LoginPage(page);
+    const defaultPageObj = new DefaultPage(page);
+    const navigatePageObj = new NavigatePage(page);
     defaultPageObj.shouldTitleBeEqual(page,PageTitleEnum.Login);
-    let productPageObj = await loginPageObj.loginAdmin();
+    const productPageObj = await loginPageObj.loginAdmin();
     await productPageObj.sort();
     await productPageObj.addToCart();
     let cartPage = await navigatePageObj.navigateTo(()=>productPageObj.goToCart(),CartPage,page);
 })
 
 test("Verify list from DB", async({ page })=>{
-    await page.goto('');
-    let loginPageObj = new LoginPage(page);
-    let defaultPageObj = new DefaultPage(page);
+    const loginPageObj = new LoginPage(page);
+    const defaultPageObj = new DefaultPage(page);
     const productPageObj = await loginPageObj.loginAdmin();
-    let productList = await productPageObj.getItemsList();
-    await console.log(productList);
-    const getProductQuery = "select * from test_schema.products";
-    const listFromDb = await getDataFromDB(getProductQuery);
-    const itemsNameFromDB = await listFromDb.map(item => item.name);
-    await console.log(itemsNameFromDB);
-    defaultPageObj.shouldListBeSame(productList,itemsNameFromDB);
+    const productList = await productPageObj.getItemsList();
+    const getProductQuery = "select * from products";
+    const listFromDb = await getDataFromDB(getProductQuery)
+    const names = listFromDb.map(item => item.name)
+    defaultPageObj.shouldListBeEquivalent(productList,names);
 })
