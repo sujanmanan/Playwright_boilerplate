@@ -16,8 +16,8 @@ class EmailReporter implements Reporter {
       const transporter = nodemailer.createTransport({
         service: 'gmail', 
         auth: {
-          user: process.env.Email_User, 
-          pass: process.env.Email_Pass,
+          user: process.env.EMAIL_USER, 
+          pass: process.env.EMAIL_PASS,
         },
       });
 
