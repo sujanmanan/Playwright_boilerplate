@@ -13,7 +13,6 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  // globalSetup: './auth.setup.ts',
 
   /* Run tests in files in parallel */
   fullyParallel: true,
