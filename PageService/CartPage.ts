@@ -1,8 +1,5 @@
 import { Page } from '@playwright/test';
 import { DefaultPage } from '../Utils/DefaultPage';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 export class CartPage{
     private page: Page;

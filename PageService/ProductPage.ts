@@ -1,9 +1,6 @@
 import { Page } from '@playwright/test';
 import { DefaultPage } from '../Utils/DefaultPage';
-import dotenv from 'dotenv';
 import { productPageObject } from '../PageObjects/ProductPageObject';
-
-dotenv.config();
 
 export class ProductPage{
     private page: Page;
